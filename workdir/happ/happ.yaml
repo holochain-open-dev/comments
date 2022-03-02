@@ -1,0 +1,15 @@
+---
+manifest_version: "1"
+name: comments-test
+description: ~
+roles:
+  - id: comments
+    provisioning:
+      strategy: create
+      deferred: false
+    dna:
+      bundled: "../dna/comments-test.dna"
+      properties: ~
+      uuid: ~
+      version: ~
+      clone_limit: 0

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Material+Icons&display=block"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+    />
+  </head>
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <body>
+    <comments-test-app></comments-test-app>
+
+    <script type="module">
+      import {
+        ProfilesService,
+        ProfilesStore,
+        ProfilePrompt,
+        SearchAgent,
+        profilesStoreContext,
+      } from '@holochain-open-dev/profiles';
+
+      import {
+        CommentThread,
+        CommentsStore,
+        commentsStoreContext,
+      } from '../dist';
+
+      import { ContextProvider } from '@holochain-open-dev/context';
+      import { HolochainClient } from '@holochain-open-dev/cell-client';
+      import { ScopedElementsMixin } from '@open-wc/scoped-elements';
+      import { LitElement, html } from 'lit';
+
+      class CommentsTestApp extends ScopedElementsMixin(LitElement) {
+        static get properties() {
+          return {
+            loaded: {
+              type: Boolean,
+            },
+            entryHash: {
+              type: Boolean,
+            },
+          };
+        }
+
+        async firstUpdated() {
+          const client = await HolochainClient.connect(
+            `ws://localhost:${process.env.HC_PORT}`,
+            'test-app'
+          );
+          const cellClient = client.forCell(
+            client.cellDataByRoleId('comments')
+          );
+
+          const profilesStore = new ProfilesStore(cellClient);
+          new ContextProvider(this, profilesStoreContext, profilesStore);
+
+          this.entryHash = await cellClient.callZome(
+            'comments',
+            'create_dummy_entry',
+            'dummy content'
+          );
+
+          const store = new CommentsStore(cellClient);
+
+          new ContextProvider(this, commentsStoreContext, store);
+          this.loaded = true;
+        }
+
+        render() {
+          if (!this.loaded) return html`<span>Loading...</span>`;
+          return html`
+            <profile-prompt>
+              <comment-thread .entryHash=${this.entryHash}></comment-thread>
+            </profile-prompt>
+          `;
+        }
+
+        static get scopedElements() {
+          return {
+            'profile-prompt': ProfilePrompt,
+            'comment-thread': CommentThread,
+          };
+        }
+      }
+
+      customElements.define('comments-test-app', CommentsTestApp);
+    </script>
+  </body>
+</html>

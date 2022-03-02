@@ -1,0 +1,21 @@
+[package]
+authors = ["guillem.cordoba@gmail.com", "eric@harris-braun.com", "tatsuya.g.sato@yumeville.com"]
+description = "Comments zome for any Holochain app"
+documentation = "https://holochain-open-dev.github.io/comments"
+edition = "2018"
+homepage = "https://docs.rs/hc_zome_comments"
+license = "MIT"
+name = "hc_zome_comments"
+repository = "https://github.com/holochain-open-dev/comments"
+version = "0.0.1"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+name = "hc_zome_comments"
+
+[dependencies]
+derive_more = "0"
+serde = "1"
+
+hc_zome_comments_types = {path = "../types"}
+hdk = {version = "0.0.121", features = ["encoding"]}

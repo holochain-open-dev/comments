@@ -1,0 +1,11 @@
+---
+manifest_version: "1"
+name: comments-test
+uuid: 00000000-0000-0000-0000-000000000000
+properties: ~
+zomes:
+  - name: comments
+    bundled: ../../target/wasm32-unknown-unknown/release/hc_zome_comments.wasm
+
+  - name: profiles
+    bundled: ../../target/wasm32-unknown-unknown/release/profiles.wasm
