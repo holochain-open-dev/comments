@@ -6,6 +6,8 @@ properties: ~
 zomes:
   - name: comments
     bundled: ../../target/wasm32-unknown-unknown/release/hc_zome_comments.wasm
+  - name: dummy
+    bundled: ../../target/wasm32-unknown-unknown/release/dummy.wasm
 
   - name: profiles
     bundled: ../../target/wasm32-unknown-unknown/release/profiles.wasm

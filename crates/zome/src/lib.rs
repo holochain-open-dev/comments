@@ -17,14 +17,7 @@ mod utils;
 use hc_zome_comments_types::*;
 use utils::try_get_and_convert;
 
-#[hdk_entry(id = "dummy")]
-pub struct DummyEntry(String);
-
-entry_defs![
-    PathEntry::entry_def(),
-    Comment::entry_def(),
-    DummyEntry::entry_def()
-];
+entry_defs![PathEntry::entry_def(), Comment::entry_def()];
 
 /// Creates the comment for the agent executing this call.
 #[hdk_extern]
@@ -67,13 +60,4 @@ pub fn get_comments_for_entry(
     }
 
     Ok(comments)
-}
-
-#[hdk_extern]
-pub fn create_dummy_entry(dummy: DummyEntry) -> ExternResult<EntryHashB64> {
-    create_entry(&dummy)?;
-
-    let hash = hash_entry(&dummy)?;
-
-    Ok(hash.into())
 }

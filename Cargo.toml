@@ -1,8 +1,6 @@
 [workspace]
 members = [
-  "crates/profiles",
-  "crates/zome",
-  "crates/types",
+  "crates/*",
 ]
 
 [profile.dev]

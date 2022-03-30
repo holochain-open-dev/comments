@@ -2,7 +2,7 @@ import { html, LitElement } from 'lit';
 import { query, property, state } from 'lit/decorators.js';
 import { contextProvided } from '@holochain-open-dev/context';
 import { ScopedElementsMixin } from '@open-wc/scoped-elements';
-import { Dictionary, EntryHashB64 } from '@holochain-open-dev/core-types';
+import { EntryHashB64 } from '@holochain-open-dev/core-types';
 import {
   Button,
   CircularProgress,
@@ -21,7 +21,7 @@ import { StoreSubscriber } from 'lit-svelte-stores';
  * @fires comment-updated - Fired after the comment has been created. Detail will have this shape: { comment: { nickname, fields } }
  */
 export class CommentThread extends ScopedElementsMixin(LitElement) {
-  @property()
+  @property({ type: String, attribute: 'entry-hash' })
   entryHash!: EntryHashB64;
 
   /** Dependencies */

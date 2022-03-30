@@ -63,7 +63,7 @@
           new ContextProvider(this, profilesStoreContext, profilesStore);
 
           this.entryHash = await cellClient.callZome(
-            'comments',
+            'dummy',
             'create_dummy_entry',
             'dummy content'
           );
