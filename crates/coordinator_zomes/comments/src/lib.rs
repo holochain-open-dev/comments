@@ -1,4 +1,6 @@
 use hdk::prelude::*;
+use hdk::prelude::holo_hash::EntryHashB64;
+
 
 use std::collections::BTreeMap;
 
@@ -37,9 +39,9 @@ pub fn create_comment(create_input: CreateCommentInput) -> ExternResult<(EntryHa
 
 #[hdk_extern]
 pub fn get_comments_for_entry(
-    entry_hash: EntryHash,
-) -> ExternResult<BTreeMap<EntryHash, Comment>> {
-    let mut comments: BTreeMap<EntryHash, Comment> = BTreeMap::new();
+    entry_hash: EntryHashB64,
+) -> ExternResult<BTreeMap<EntryHashB64, Comment>> {
+    let mut comments: BTreeMap<EntryHashB64, Comment> = BTreeMap::new();
 
     let links = get_links(entry_hash, LinkTypes::CommentAbout, Some(LinkTag::new("comments")))?;
 

@@ -1,11 +1,11 @@
 [package]
 edition = "2021"
-name = "dummy"
+name = "hc_zome_dummy"
 version = "0.0.1"
 
 [lib]
 crate-type = ["cdylib", "rlib"]
-name = "dummy"
+name = "hc_zome_dummy"
 
 [dependencies]
 serde = "1"

@@ -1,4 +1,5 @@
 import { CellClient } from '@holochain-open-dev/cell-client';
+import { EntryHash } from '@holochain/client';
 import {
   AgentPubKeyB64,
   EntryHashB64,
@@ -61,7 +62,7 @@ export class CommentsStore {
   ) {
     this.config = merge(defaultConfig, config);
     this._service = new CommentsService(cellClient, this.config.zomeName);
-    this.myAgentPubKey = serializeHash(cellClient.cellId[1]);
+    this.myAgentPubKey = serializeHash(cellClient.cell.cell_id[1]);
   }
 
   /** Actions */

@@ -1,6 +1,6 @@
-import { Context, createContext } from '@holochain-open-dev/context';
+import { createContext } from '@lit-labs/context';
 import { CommentsStore } from './comments-store';
 
-export const commentsStoreContext: Context<CommentsStore> = createContext(
+export const commentsStoreContext = createContext<CommentsStore>(
   'hc_zome_comments/store'
 );

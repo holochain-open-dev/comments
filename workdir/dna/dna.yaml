@@ -1,13 +1,29 @@
 ---
 manifest_version: "1"
 name: comments-test
-uuid: 00000000-0000-0000-0000-000000000000
-properties: ~
-zomes:
-  - name: comments
-    bundled: ../../target/wasm32-unknown-unknown/release/hc_zome_comments.wasm
-  - name: dummy
-    bundled: ../../target/wasm32-unknown-unknown/release/dummy.wasm
+integrity:
+  uuid: 00000000-0000-0000-0000-000000000000
+  properties: ~
+  origin_time: 2022-07-17T14:43:30.487Z
+  zomes:
+    - name: comments_integrity
+      bundled: ../../target/wasm32-unknown-unknown/release/hc_zome_comments_integrity.wasm
+    - name: dummy_integrity
+      bundled: ../../target/wasm32-unknown-unknown/release/hc_zome_dummy_integrity.wasm
+    - name: profiles_integrity
+      bundled: ../../target/wasm32-unknown-unknown/release/hc_zome_profiles_integrity.wasm
 
-  - name: profiles
-    bundled: ../../target/wasm32-unknown-unknown/release/profiles.wasm
+coordinator:
+  zomes:
+    - name: comments
+      bundled: ../../target/wasm32-unknown-unknown/release/hc_zome_comments.wasm
+      dependencies:
+        - name: comments_integrity
+    - name: dummy
+      bundled: ../../target/wasm32-unknown-unknown/release/hc_zome_dummy.wasm
+      dependencies:
+        - name: dummy_integrity
+    - name: profiles
+      bundled: ../../target/wasm32-unknown-unknown/release/hc_zome_profiles.wasm
+      dependencies:
+        - name: profiles_integrity
