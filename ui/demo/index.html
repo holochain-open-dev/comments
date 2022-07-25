@@ -33,8 +33,9 @@
         commentsStoreContext,
       } from '../dist';
 
-      import { ContextProvider } from '@holochain-open-dev/context';
-      import { HolochainClient } from '@holochain-open-dev/cell-client';
+      import { ContextProvider } from '@lit-labs/context';
+      import { HolochainClient, CellClient } from '@holochain-open-dev/cell-client';
+      import { AppWebsocket } from '@holochain/client';
       import { ScopedElementsMixin } from '@open-wc/scoped-elements';
       import { LitElement, html } from 'lit';
 
@@ -51,15 +52,21 @@
         }
 
         async firstUpdated() {
-          const client = await HolochainClient.connect(
-            `ws://localhost:${process.env.HC_PORT}`,
-            'test-app'
-          );
-          const cellClient = client.forCell(
-            client.cellDataByRoleId('comments')
+          const appWs = await AppWebsocket.connect(
+            `ws://localhost:${process.env.HC_PORT}`
           );
 
-          const profilesStore = new ProfilesStore(cellClient);
+          const appInfo = await appWs.appInfo({
+            installed_app_id: 'test-app',
+          });
+
+          const cell = appInfo.cell_data.find(c => c.role_id === 'comments');
+
+          const client = new HolochainClient(appWs);
+
+          const cellClient = new CellClient(client, cell);
+
+          const profilesStore = new ProfilesStore( new ProfilesService(cellClient));
           new ContextProvider(this, profilesStoreContext, profilesStore);
 
           this.entryHash = await cellClient.callZome(

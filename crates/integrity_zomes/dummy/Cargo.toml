@@ -2,12 +2,12 @@
 description = "Dummy"
 license = "MIT"
 edition = "2021"
-name = "hc_zomes_dummy_integrity"
+name = "hc_zome_dummy_integrity"
 version = "0.0.1"
 
 [lib]
 crate-type = ["cdylib", "rlib"]
-name = "hc_zomes_dummy_integrity"
+name = "hc_zome_dummy_integrity"
 
 [dependencies]
 derive_more = "0"

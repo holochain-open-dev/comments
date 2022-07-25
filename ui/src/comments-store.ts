@@ -3,8 +3,8 @@ import { EntryHash } from '@holochain/client';
 import {
   AgentPubKeyB64,
   EntryHashB64,
-  serializeHash,
 } from '@holochain-open-dev/core-types';
+import { serializeHash } from '@holochain-open-dev/utils';
 import merge from 'lodash-es/merge';
 
 import { CommentsService } from './comments-service';

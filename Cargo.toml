@@ -2,7 +2,8 @@
 resolver="2"
 members = [
   "crates/integrity_zomes/*",
-  "crates/coordinator_zomes/*"
+  "crates/coordinator_zomes/*",
+  "crates/types",
 ]
 
 [profile.dev]

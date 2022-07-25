@@ -1,9 +1,9 @@
 import { CellClient } from '@holochain-open-dev/cell-client';
+import { AgentPubKeyB64 } from '@holochain-open-dev/core-types';
 import {
-  AgentPubKeyB64,
   deserializeHash,
   serializeHash,
-} from '@holochain-open-dev/core-types';
+} from '@holochain-open-dev/utils';
 import { CellId, AppSignalCb } from '@holochain/client';
 import { Comment } from './types';
 

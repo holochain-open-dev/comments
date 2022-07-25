@@ -22,7 +22,7 @@ import "@holochain-open-dev/comments/update-comment";
 import "@holochain-open-dev/comments/holo-identicon";
 import "@holochain-open-dev/comments/agent-avatar";
 import "@holochain-open-dev/comments/comment-prompt";
-import "@holochain-open-dev/context/context-provider";
+import "@lit-labs/context/context-provider";
 import { CommentsZomeMock } from "@holochain-open-dev/comments/mocks";
 import {
   commentsStoreContext,

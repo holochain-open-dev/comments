@@ -7,13 +7,13 @@
 1. Install this module and its necessary dependencies with:
 
 ```bash
-npm install @holochain-open-dev/comments @holochain-open-dev/context @holochain-open-dev/cell-client
+npm install @holochain-open-dev/comments @lit-labs/context @holochain-open-dev/cell-client
 ```
 
 Careful! If you are using NPM workspaces (which is the case for the apps generated with the Holochain scaffolding and RAD tools), you need to specify which workspace you want to install those dependencies to. In the case of the apps generated with the RAD tools:
 
 ```bash
-npm install @holochain-open-dev/comments @holochain-open-dev/context @holochain-open-dev/cell-client -w ui
+npm install @holochain-open-dev/comments @lit-labs/context @holochain-open-dev/cell-client -w ui
 ```
 
 2. [Choose which elements you need](../frontend/elements.md) and import them:
@@ -80,7 +80,7 @@ async function setupCommentsStore() {
 
 ```js
 // This can be placed in the index.js, at the top level of your web-app.
-import "@holochain-open-dev/context/context-provider";
+import "@lit-labs/context/context-provider";
 ```
 
 And then in your html:

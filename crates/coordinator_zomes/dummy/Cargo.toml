@@ -10,6 +10,6 @@ name = "hc_zome_dummy"
 [dependencies]
 serde = "1"
 derive_more = "0"
-hc_zomes_dummy_integrity = { path = "../../integrity_zomes/dummy" }
+hc_zome_dummy_integrity = { path = "../../integrity_zomes/dummy" }
 
 hdk = "0.0.142"

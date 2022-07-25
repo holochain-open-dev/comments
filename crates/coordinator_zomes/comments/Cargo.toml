@@ -13,4 +13,4 @@ derive_more = "0"
 hc_zome_comments_integrity = { path = "../../integrity_zomes/comments" }
 hc_zome_comments_types = { path = "../../types"}
 
-hdk = "0.0.142"
+hdk = {version = "0.0.142", features = ["encoding"]}

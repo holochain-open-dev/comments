@@ -1,5 +1,5 @@
 use hdk::prelude::*;
-use hc_zomes_dummy_integrity::*;
+use hc_zome_dummy_integrity::*;
 
 #[hdk_extern]
 pub fn create_dummy_entry(dummy: DummyEntry) -> ExternResult<EntryHash> {

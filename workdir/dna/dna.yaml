@@ -4,7 +4,7 @@ name: comments-test
 integrity:
   uuid: 00000000-0000-0000-0000-000000000000
   properties: ~
-  origin_time: 2022-07-17T14:43:30.487Z
+  origin_time: 2022-07-25T13:55:49.200Z
   zomes:
     - name: comments_integrity
       bundled: ../../target/wasm32-unknown-unknown/release/hc_zome_comments_integrity.wasm
