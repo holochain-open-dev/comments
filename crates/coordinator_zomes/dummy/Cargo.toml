@@ -1,0 +1,15 @@
+[package]
+edition = "2021"
+name = "dummy"
+version = "0.0.1"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+name = "dummy"
+
+[dependencies]
+serde = "1"
+derive_more = "0"
+hc_zomes_dummy_integrity = { path = "../../integrity_zomes/dummy" }
+
+hdk = "0.0.142"

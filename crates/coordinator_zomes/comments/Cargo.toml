@@ -1,0 +1,16 @@
+[package]
+edition = "2021"
+name = "hc_zome_comments"
+version = "0.0.1"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+name = "hc_zome_comments"
+
+[dependencies]
+serde = "1"
+derive_more = "0"
+hc_zome_comments_integrity = { path = "../../integrity_zomes/comments" }
+hc_zome_comments_types = { path = "../../types"}
+
+hdk = "0.0.142"

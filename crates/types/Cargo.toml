@@ -2,7 +2,7 @@
 authors = ["guillem.cordoba@gmail.com", "eric@harris-braun.com", "tatsuya.g.sato@yumeville.com"]
 description = "Types for the hc_zome_comments zome"
 documentation = "https://holochain-open-dev.github.io/comments"
-edition = "2018"
+edition = "2021"
 homepage = "https://docs.rs/hc_zome_comments_types"
 license = "MIT"
 name = "hc_zome_comments_types"
@@ -17,4 +17,4 @@ name = "hc_zome_comments_types"
 derive_more = "0"
 serde = "1"
 
-hdk = {version = "0.0.122", features = ["encoding"]}
+hdi = "0.0.14"

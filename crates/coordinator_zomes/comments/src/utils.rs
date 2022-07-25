@@ -2,15 +2,15 @@ use hdk::prelude::*;
 
 pub fn try_get_and_convert<T: TryFrom<SerializedBytes>>(entry_hash: EntryHash) -> ExternResult<T> {
     match get(entry_hash.clone(), GetOptions::default())? {
-        Some(element) => try_from_element(element),
+        Some(record) => try_from_record(record),
         None => Err(err("Entry not found")),
     }
 }
 
-pub fn try_from_element<T: TryFrom<SerializedBytes>>(element: Element) -> ExternResult<T> {
-    match element.entry() {
-        element::ElementEntry::Present(entry) => try_from_entry::<T>(entry.clone()),
-        _ => Err(err("Could not convert element")),
+pub fn try_from_record<T: TryFrom<SerializedBytes>>(record: Record) -> ExternResult<T> {
+    match record.entry() {
+        record::RecordEntry::Present(entry) => try_from_entry::<T>(entry.clone()),
+        _ => Err(err("Could not convert record")),
     }
 }
 
@@ -25,5 +25,5 @@ pub fn try_from_entry<T: TryFrom<SerializedBytes>>(entry: Entry) -> ExternResult
 }
 
 pub(crate) fn err(reason: &str) -> WasmError {
-    WasmError::Guest(String::from(reason))
+    wasm_error!(WasmErrorInner::Guest(String::from(reason)))
 }
