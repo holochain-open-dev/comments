@@ -47,6 +47,7 @@ export class CommentThread extends ScopedElementsMixin(LitElement) {
   );
 
   async firstUpdated() {
+    console.log("Fetching comments for entryHash: ", this.entryHash);
     await this.store.fetchCommentsForEntry(this.entryHash);
     this._loading = false;
   }

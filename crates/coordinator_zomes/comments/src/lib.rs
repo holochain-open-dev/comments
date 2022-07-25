@@ -12,7 +12,7 @@ use utils::try_get_and_convert;
 
 /// Creates the comment for the agent executing this call.
 #[hdk_extern]
-pub fn create_comment(create_input: CreateCommentInput) -> ExternResult<(EntryHash, Comment)> {
+pub fn create_comment(create_input: CreateCommentInput) -> ExternResult<(EntryHashB64, Comment)> {
     let agent_info = agent_info()?;
     let time = sys_time()?;
 
@@ -28,7 +28,7 @@ pub fn create_comment(create_input: CreateCommentInput) -> ExternResult<(EntryHa
     let comment_hash = hash_entry(&comment)?;
 
     create_link(
-        create_input.comment_about,
+        EntryHash::from(create_input.comment_about),
         comment_hash.clone(),
         LinkTypes::CommentAbout,
         LinkTag::new("comments"),
@@ -43,13 +43,15 @@ pub fn get_comments_for_entry(
 ) -> ExternResult<BTreeMap<EntryHashB64, Comment>> {
     let mut comments: BTreeMap<EntryHashB64, Comment> = BTreeMap::new();
 
-    let links = get_links(entry_hash, LinkTypes::CommentAbout, Some(LinkTag::new("comments")))?;
+    debug!("+_+_+_+_+_+_+_+ entry_hash: {:?}", entry_hash.clone());
+
+    let links = get_links(EntryHash::from(entry_hash), LinkTypes::CommentAbout, Some(LinkTag::new("comments")))?;
+    debug!("+_+_+_+_+_+_+_+ links: {:?}", links);
 
     for link in links {
         let comment: Comment = try_get_and_convert(EntryHash::from(link.target.clone()))?;
-
         comments.insert(EntryHash::from(link.target).into(), comment);
     }
-
+    debug!("+_+_+_+_+_+_+_+ comments: {:?}", comments);
     Ok(comments)
 }

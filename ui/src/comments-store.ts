@@ -9,7 +9,7 @@ import merge from 'lodash-es/merge';
 
 import { CommentsService } from './comments-service';
 import { Comment } from './types';
-import { writable, Writable, derived, Readable } from 'svelte/store';
+import { writable, Writable, derived, Readable, get } from 'svelte/store';
 import { defaultConfig, CommentsConfig } from './config';
 
 export interface CommentsState {

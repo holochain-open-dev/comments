@@ -69,11 +69,14 @@
           const profilesStore = new ProfilesStore( new ProfilesService(cellClient));
           new ContextProvider(this, profilesStoreContext, profilesStore);
 
+          console.log("Calling create_dummy_entry...");
           this.entryHash = await cellClient.callZome(
             'dummy',
             'create_dummy_entry',
             'dummy content'
           );
+
+          console.log("created dummy entry and got entryHash: ", this.entryHash);
 
           const store = new CommentsStore(cellClient);
 

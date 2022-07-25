@@ -1,4 +1,5 @@
 use hdi::prelude::*;
+use hdi::prelude::holo_hash::{EntryHashB64, AgentPubKeyB64};
 
 /// Comment entry definition.
 ///
@@ -7,9 +8,9 @@ use hdi::prelude::*;
 #[derive(Clone)]
 #[serde(rename_all = "camelCase")]
 pub struct Comment {
-    pub comment_about: EntryHash,
+    pub comment_about: EntryHashB64,
     pub content: String,
-    pub author: AgentPubKey,
+    pub author: AgentPubKeyB64,
     pub created_at: Timestamp,
 }
 
@@ -18,6 +19,6 @@ pub struct Comment {
 #[derive(Clone, Serialize, Deserialize, Debug)]
 #[serde(rename_all = "camelCase")]
 pub struct CreateCommentInput {
-    pub comment_about: EntryHash,
+    pub comment_about: EntryHashB64,
     pub content: String,
 }
