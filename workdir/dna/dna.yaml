@@ -16,14 +16,14 @@ integrity:
 coordinator:
   zomes:
     - name: comments
-      bundled: ../../target/wasm32-unknown-unknown/release/hc_zome_comments.wasm
+      bundled: ../../target/wasm32-unknown-unknown/release/hc_zome_comments_coordinator.wasm
       dependencies:
         - name: comments_integrity
     - name: dummy
-      bundled: ../../target/wasm32-unknown-unknown/release/hc_zome_dummy.wasm
+      bundled: ../../target/wasm32-unknown-unknown/release/hc_zome_dummy_coordinator.wasm
       dependencies:
         - name: dummy_integrity
     - name: profiles
-      bundled: ../../target/wasm32-unknown-unknown/release/hc_zome_profiles.wasm
+      bundled: ../../target/wasm32-unknown-unknown/release/hc_zome_profiles_coordinator.wasm
       dependencies:
         - name: profiles_integrity

@@ -1,11 +1,11 @@
 [package]
 edition = "2021"
-name = "hc_zome_profiles"
+name = "hc_zome_profiles_coordinator"
 version = "0.0.1"
 
 [lib]
 crate-type = ["cdylib", "rlib"]
-name = "hc_zome_profiles"
+name = "hc_zome_profiles_coordinator"
 
 [dependencies]
 serde = "1"
